@@ -17,6 +17,11 @@ mysql -u root < /vagrant/provision/create_user.sql
 # Switch to the vagrant user in order to install RVM with Ruby 2.0.0
 su vagrant << EOF
 
+
+	# Importing ”Michal Papis (RVM signing) <mpapis@gmail.com>" public Key into our Keychain
+        # (So we can download Ruby)
+        gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
+
 	# Install rvm and ruby
 	cd /vagrant
 	\curl -sSL https://get.rvm.io | bash -s stable --ruby=2.0.0
